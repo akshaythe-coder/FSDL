@@ -1,0 +1,145 @@
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0c0c16,#141428,#1b2240);
+    font-family:'Poppins','Segoe UI',Arial;
+    overflow:hidden;
+}
+
+/* Ambient Glow Background */
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(circle at 25% 40%, rgba(90,160,255,0.08), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,120,70,0.08), transparent 50%);
+}
+
+/* Calculator Card */
+.calculator{
+    backdrop-filter:blur(25px);
+    background:rgba(30,35,60,0.55);
+    padding:35px;
+    border-radius:28px;
+    width:320px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.8),
+        0 0 60px rgba(70,140,255,0.12),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+    transition:.35s ease;
+}
+
+.calculator:hover{
+    transform:translateY(-5px);
+    box-shadow:
+        0 35px 90px rgba(0,0,0,0.9),
+        0 0 80px rgba(70,140,255,0.18);
+}
+
+/* Display */
+#display{
+    width:100%;
+    height:85px;
+    border:none;
+    outline:none;
+    background:linear-gradient(145deg,#07070f,#101024);
+    color:#7ed3ff;
+    font-size:34px;
+    border-radius:18px;
+    padding:20px;
+    text-align:right;
+    margin-bottom:28px;
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.9),
+        inset 0 2px 5px rgba(120,180,255,0.08),
+        0 0 20px rgba(120,180,255,0.08);
+    letter-spacing:1px;
+}
+
+/* Button Grid */
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+/* Buttons */
+button{
+    height:65px;
+    border:none;
+    border-radius:16px;
+    font-size:20px;
+    font-weight:600;
+    background:linear-gradient(145deg,#2e2f45,#1f2035);
+    color:#e6e9ff;
+    cursor:pointer;
+    transition:.25s cubic-bezier(.34,1.56,.64,1);
+    box-shadow:
+        0 10px 18px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    position:relative;
+    overflow:hidden;
+}
+
+/* Shine Animation */
+button::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+    transition:.6s;
+}
+
+button:hover::after{
+    left:120%;
+}
+
+/* Hover */
+button:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:
+        0 18px 28px rgba(0,0,0,.75),
+        0 0 25px rgba(90,160,255,.25);
+    background:linear-gradient(145deg,#3b3c55,#292a44);
+}
+
+/* Click */
+button:active{
+    transform:scale(.96);
+}
+
+/* Operator Buttons (Premium Orange Glow) */
+.orange{
+    background:linear-gradient(145deg,#ff7a30,#ff4d00);
+    box-shadow:
+        0 12px 22px rgba(255,85,0,.55),
+        0 0 35px rgba(255,120,70,.35);
+    color:#fff;
+}
+
+.orange:hover{
+    background:linear-gradient(145deg,#ff9050,#ff6a20);
+    box-shadow:
+        0 20px 35px rgba(255,85,0,.75),
+        0 0 50px rgba(255,120,70,.5);
+}
+
+/* Clear Button */
+button:first-child{
+    background:linear-gradient(145deg,#3b2a2a,#251818);
+    color:#ff9a9a;
+}
+
+/* Zero Button */
+.zero{
+    grid-column:span 2;
+}
